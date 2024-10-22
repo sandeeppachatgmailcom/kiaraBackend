@@ -20,33 +20,41 @@
 <h3 align="left">Documentation</h3>
 <ul>
   <li>swagger API reference :api-docs/ </li>
-  <li>Code guidelines</li>
-  <li>ReadMe files</li>
+   
 </ul>
 
 <h3 align="left">Router</h3>
 <ul>
-  <li>role-based routes handling </li>
+  <li>Role-based routes handling </li>
 </ul>
 
 <h3 align="left">Controller</h3>
 <ul>
-  <li>categorised folder based on router</li>
+  <li>Categorised folder based on router</li>
 </ul>
 
 <h3 align="left">Model</h3>
 <ul>
-  <li>schema</li>
+  <li>Schema</li>
     <ul>
-      <li> schema for collections </li>
+      <li> Schema for collections </li>
     </ul>
-  <li>functions</li>
+  <li>Functions</li>
     <ul>
-      <li>folder arranged based on routes  </li>
+      <li>Folder arranged based on roles  </li>
     </ul>
   
-  <li>database</li>
-  <ul>
+  <li>Database</li>
+    <ul>
       <li>Database connections  </li>
     </ul>
+</ul>
+<h2>Database Design : <code>MongoDB</code></h2>
+-------------------------------------------------------------------------------------
+<h3 align="left">Collections </h3>
+<ul>
+  <li>User  </li>
+  <ul>
+    <li>single collecion for all users , data categorization is based on roles.   </li>
+  </ul>   
 </ul>
