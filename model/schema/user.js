@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema(
         userType:{ type: String, default:'user',required:true},
         deleted: { type: Boolean, default:false,required:true}   ,
         isActive:{ type: Boolean, default:false,required:true},
-        panCard:{type:Boolean}     
+        panCard:{type:String}     
     }
 );
 

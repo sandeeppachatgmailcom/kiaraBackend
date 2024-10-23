@@ -30,7 +30,7 @@
 
 <h3 align="left">Controller</h3>
 <ul>
-  <li>Categorised folder based on router</li>
+  <li>Categorised folder based on roles</li>
 </ul>
 
 <h3 align="left">Model</h3>
@@ -41,20 +41,28 @@
     </ul>
   <li>Functions</li>
     <ul>
-      <li>Folder arranged based on roles  </li>
+      <li>Folder arranged based on roles & files created based on business logic </li>
     </ul>
   
   <li>Database</li>
     <ul>
-      <li>Database connections  </li>
+      <li>Database connection implementation  </li>
     </ul>
 </ul>
 <h2>Database Design : <code>MongoDB</code></h2>
--------------------------------------------------------------------------------------
+
 <h3 align="left">Collections </h3>
 <ul>
   <li>User  </li>
   <ul>
     <li>single collecion for all users , data categorization is based on roles.   </li>
   </ul>   
+  <li>Serial numbers </li>
+  <ul>
+    <li>Collection for providing custom serial number for collection , it confirms no data lose happend .  when trusting with default collection id , this scenario is easy to monitor </li>
+  </ul>
+  <li>ActivityLog </li>
+  <ul>
+    <li>logs all the activity of the users .   </li>
+  </ul>  
 </ul>

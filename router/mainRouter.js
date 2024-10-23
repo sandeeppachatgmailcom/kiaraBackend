@@ -9,7 +9,10 @@ const swaggerUi = require('swagger-ui-express');
 
 // handling  swagger documentation 
 router.use('/api-docs',swaggerUi.serve, swaggerUi.setup(swaggerDocs))
-
+router.use((req,res,next)=>{
+    console.log(req.body, 'object')
+    next()
+})
 
 // handling custom routes  
 router.use('/admin',adminRouter)

@@ -2,14 +2,13 @@
 const express = require('express')
 const error404 = require('../controller/error404')
 const router = express.Router()
+const postCreateUser = require('../controller/user/postCreateUser')
+const { createToken } = require('../middleware/authentication')
+const getActiveClients = require('../controller/user/getActiveUsers')
 
-router.get('/',(req,res)=>{
-    res.json({message:'success'})
-})
-router.post('/',(req,res)=>{
-    console.log(req.body,'req.body')
-    res.json({message:'user'})
-})
+
+router.use('/createUser',createToken,postCreateUser)
+router.get('/getActiveClients',getActiveClients)
 
 // handling  undefined api endpoints 
 router.use(error404)
