@@ -1,9 +1,8 @@
 const readActiveUsers = require("../../model/functions/users/readActiveUsers");
 
-const getActiveUsers = async (req, res) => {
+const getActiveClients = async (req, res) => {
   try {
-    const data = await readActiveUsers("DN10000009");
-   
+    const data = await readActiveUsers("DN10000008");
     if (data ) {
      res.status(200).json({ status: true, ...data });
     } else {
@@ -14,4 +13,4 @@ const getActiveUsers = async (req, res) => {
   }
 };
 
-module.exports = getActiveUsers;
+module.exports = getActiveClients;

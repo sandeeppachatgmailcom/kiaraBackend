@@ -4,7 +4,7 @@ const { encryptPassword } = require("../../../utils/encrypt.js")
  
 const createClient =async  (data)=>{
     try {
-        console.log('hellossssss')
+         
         let { userId, firstname , designation, email, password, isAdmin, lastName, contact, userType, deleted, isActive  }  =   data  
         console.log(firstname ,  email  ,  userType,data,'firstname ,  email  ,  userTypefirstname ,  email  ,  userType')
         if( !firstname ||  !email || !userType ) return    {status:false,message:'requiered informations are missing  '}   
