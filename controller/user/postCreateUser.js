@@ -5,6 +5,7 @@ const postCreateUser = async (req, res) => {
 
     try {
         const inputData = await sanitizeBody(req.body)
+        if (!inputData?.designation) inputData.designation = "DN10000008" 
         const result = await createClient(inputData)
         if (result) res.json({ status: true, message: 'success', ...result })
         else res.json({ status: false, message: 'failed' })

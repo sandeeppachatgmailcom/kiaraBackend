@@ -20,7 +20,7 @@ const createClient =async  (data)=>{
             if(!isAdmin) {isAdmin = false;}
             deleted= false ;
             isActive = true;
-            designation =  'DN10000005'
+             
             password =await encryptPassword(password) || null
             if(!contact) contact = 'nil'
         }
