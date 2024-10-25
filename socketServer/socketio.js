@@ -1,58 +1,57 @@
-// socketHandler.js
-
-
-
-let users  = [];
-
-
+let users = [];
 
 const socketHandler = (io) => {
-    const addUser = (userId,  socketId ) => {
+    const addUser = (userId, socketId) => {
         const existingUser = users.find((user) => user.userId === userId);
         if (existingUser) {
-          existingUser.socketId = socketId;
-          existingUser.online = true;
+            existingUser.socketId = socketId;
+            existingUser.online = true;
         } else {
-          userId ? users.push({ userId, socketId, online: true }) : "";
-          console.clear()
-          console.log(users,'online users')
+            if (userId) {
+                users.push({ userId, socketId, online: true });
+                console.log(users, 'online users');
+            }
         }
-    
-        io.emit("usersOnline", users);
-      };
 
+        io.emit("usersOnline", users);
+    };
+
+    const removeUser = (socketId) => {
+        users = users.map(user => 
+            user.socketId === socketId ? { ...user, online: false } : user
+        );
+        io.emit("usersOnline", users); // Update other clients
+    };
 
     io.on('connection', (socket) => {
-      
-      console.log('A user connected: ',   socket.id);
-      socket.on('message', (data) => {
-        console.log('Received message: ', data);
-        // Broadcast message to all clients
-        io.emit('message', data);
-      }); 
-      socket.on('join', ({ userId }) => {
-        console.clear()
-        console.log(`User ${userId} has joined`);
-        socket.emit('notification', {
-          message: `Welcome, user ${userId}!`
+        console.log('A user connected: ', socket.id);
+
+        socket.on('message', (data) => {
+            console.log('Received message: ', data);
+            io.emit('message', data); // Broadcast message to all clients
         });
-      });
-      
+
+        socket.on('join', ({ userId }) => {
+            console.log(`User ${userId} has joined`);
+            socket.emit('notification', {
+                message: `Welcome, user ${userId}!`
+            });
+        });
+
         socket.on("addUser", (user) => {
-        addUser(user.userid, socket.id);
+            addUser(user.userId, socket.id); // Corrected casing to `userId`
         });
 
         socket.on("userUpdated", (user) => {
-          console.log(user,users,'user,users')
-          });
-  
-       
-      socket.on('disconnect', () => {
-        console.log('User disconnected: ', socket.id);
-      });
+            console.log(user, users, 'user, users---------------------------------***********');
+            
+        });
+
+        socket.on('disconnect', () => {
+            console.log('User disconnected: ', socket.id);
+            removeUser(socket.id); // Mark user as offline
+        });
     });
-  };
-  
-  // Export the socket handler function
-  module.exports = socketHandler;
-  
+};
+
+module.exports = socketHandler;
