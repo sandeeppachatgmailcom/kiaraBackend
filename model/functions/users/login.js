@@ -9,7 +9,7 @@ const userLogin =async(email,password)=>{
     if(result){
         const validate = await bcrypt.compare(password,result.password)
         result.password = null
-        
+         
         if(validate==true){
             let temp =  JSON.parse(JSON.stringify(result)) 
             const designation =await designationCollection.findOne({designationId:temp.designation})

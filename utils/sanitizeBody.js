@@ -9,8 +9,6 @@ const sanitizeBody = async (dataObj) => {
     await Promise.all( Object.keys(dataObj).map((keys) => {
         temp[keys] = sanitizeInput(dataObj[keys])
     }))
-    console.log('sanitized')
-    console.log(temp,'sanitized')
     return temp
 }
 

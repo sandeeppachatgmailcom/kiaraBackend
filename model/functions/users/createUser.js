@@ -6,7 +6,6 @@ const createClient =async  (data)=>{
     try {
          
         let { userId, firstname , designation, email, password, isAdmin, lastName, contact, userType, deleted, isActive,panCard  }  =   data  
-        console.log(firstname ,  email  ,  userType,data,'firstname ,  email  ,  userTypefirstname ,  email  ,  userType')
         if( !firstname ||  !email || !userType ) return    {status:false,message:'requiered informations are missing  '}   
         if(!userId){
             const clients = await users.findOne({$or:[ {email:email},{contact:contact} ]})
@@ -21,10 +20,10 @@ const createClient =async  (data)=>{
             deleted= false ;
             isActive = true;
              
-            password =await encryptPassword(password) || null
+            
             if(!contact) contact = 'nil'
         }
-         
+        password =await encryptPassword(password) || null 
         const newUser =  {userId, firstname , designation, email, password, isAdmin, lastName, contact , userType, deleted, isActive,panCard }
         
          const user =await  users.updateOne({userId:userId},{$set:newUser} , { upsert:true} ) 
