@@ -7,7 +7,8 @@ const postturnUserOnOff =async (req,res)=>{
     try {
         const data =await sanitizeBody(req.body)
         const result = await turnUserEnableDisable(data.userId)
-        await addToApiLog(result?.status,result?.message,req.path)
+        
+        await addToApiLog(result?.status, result?.message, req.path,  )
         res.json({result})
 
     } catch (error) {

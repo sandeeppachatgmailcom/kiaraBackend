@@ -1,15 +1,7 @@
 const apiLogCollection = require("../../schema/apiLog");
 const getSerialNumber = require("../serialNumbers/getSerialNumber");
 
-async function addToApiLog(activityStatus,
-    activityMessage,
-    apiPath,
-    errorMessage,
-    errorDetails,
-    userId,
-    clientId,
-    ipAddress,
-) {
+async function addToApiLog(activityStatus, activityMessage, apiPath,   ) {
 
 
 
@@ -17,14 +9,9 @@ async function addToApiLog(activityStatus,
         const activityId = await getSerialNumber('apilogs');
 
         const newLog = new apiLogCollection({
+            activityStatus,
             activityId,
-            activityMessage,
-            apiPath,
-            errorMessage,
-            errorDetails,
-            userId,
-            clientId,
-            ipAddress,
+            activityMessage, 
         });
 
         await newLog.save();
