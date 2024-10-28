@@ -2,10 +2,10 @@ const users = require("../../schema/user.js")
 const getserialNumber = require("../../functions/serialNumbers/getSerialNumber.js")
 const { encryptPassword } = require("../../../utils/encrypt.js")
  
-const createUser =async  (data)=>{
+const createClient =async  (data)=>{
     try {
          
-        let { userId, firstname , designation,reportingHead, email, password, isAdmin, lastName, contact, userType, deleted, isActive,panCard  }  =   data  
+        let { userId, firstname , designation, email, password, isAdmin,reportingHead, lastName, contact, userType, deleted, isActive,panCard  }  =   data  
         if( !firstname ||  !email || !userType ) return    {status:false,message:'requiered informations are missing  '}   
         if(!userId){
             const clients = await users.findOne({$or:[ {email:email},{contact:contact} ]})
@@ -24,7 +24,8 @@ const createUser =async  (data)=>{
             if(!contact) contact = 'nil'
         }
         password =await encryptPassword(password) || null 
-        const newUser =  {userId, firstname ,reportingHead, designation, email, password, isAdmin, lastName, contact , userType, deleted, isActive,panCard }
+        reportingHead = userType == 'Client'?'admin':''
+        const newUser =  {userId, firstname , designation, email, password, isAdmin,reportingHead ,lastName, contact , userType, deleted, isActive,panCard }
         
          const user =await  users.updateOne({userId:userId},{$set:newUser} , { upsert:true} ) 
          if( user.upsertedCount){
@@ -42,4 +43,4 @@ const createUser =async  (data)=>{
 
 }
 
-module.exports = createUser
+module.exports = createClient

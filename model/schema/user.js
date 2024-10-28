@@ -14,11 +14,11 @@ const userSchema = new mongoose.Schema(
         userType:{ type: String, default:'user',required:true},
         deleted: { type: Boolean, default:false,required:true}   ,
         isActive:{ type: Boolean, default:false,required:true},
-        panCard:{type:String}     
+        panCard:{type:String}    ,
+        reportingHead:{ type: String}, 
     }
 );
-
-// Create the User model from the schema
+ 
 const userCollection = mongoose.model('User', userSchema);
 
 module.exports = userCollection;
