@@ -13,7 +13,7 @@ const userLogin =async(email,password)=>{
         if(validate==true){
             let temp =  JSON.parse(JSON.stringify(result)) 
             const designation =await designationCollection.findOne({designationId:temp.designation})
-            return {status:true,message:'result success',...temp ,menuList:{...JSON.parse(JSON.stringify(designation))?.access }  }
+            return {status:true,message:'result success',...temp ,menuList:{...JSON.parse(JSON.stringify(designation))?.access },role:JSON.parse(JSON.stringify(designation))?.designation  }
         }
         else return {status:false,message:'wrong credentials '}
     }

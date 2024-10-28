@@ -11,7 +11,7 @@
 
 <h3 align="center">How to Start the Application</h3>
 <pre>
-git clone "your-repo-link"
+git clone https://github.com/sandeeppachatgmailcom/kiaraBackend.git
 cd backend
 npm install
 npm start

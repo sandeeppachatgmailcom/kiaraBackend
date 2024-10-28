@@ -1,3 +1,4 @@
+const addToApiLog = require("../../model/functions/apiLog/addtoApiLog");
 const readActiveUsers = require("../../model/functions/users/readActiveUsers");
 
 const getActiveClients = async (req, res) => {
@@ -9,6 +10,7 @@ const getActiveClients = async (req, res) => {
       res.status(404).json({ status: false, message: "No active clients found" });
     }
   } catch (error) {
+    await addToApiLog(false,error,req?.path)
     res.status(500).json({ status: false, message: "Internal Server Error", error: error.message });
   }
 };
