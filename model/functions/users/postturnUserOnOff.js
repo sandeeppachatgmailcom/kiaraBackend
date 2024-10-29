@@ -1,11 +1,11 @@
 /**
  * @swagger
- * /user/deleteUser:
+ * /user/turnUserOnOff:
  *   post:
  *     tags:
  *       - user
- *     summary: Delete a user
- *     description: Marks a user as deleted in the system by updating their status based on `userId`.
+ *     summary: Enable or disable a user
+ *     description: Toggles the active status of a user based on their `userId`. If the user is active, they will be disabled, and vice versa.
  *     requestBody:
  *       required: true
  *       content:
@@ -15,11 +15,11 @@
  *             properties:
  *               userId:
  *                 type: string
- *                 description: The unique ID of the user to be deleted.
- *                 example: "HU100017"
+ *                 description: The unique ID of the user to enable or disable.
+ *                 example: "12345"
  *     responses:
  *       200:
- *         description: User marked as deleted successfully.
+ *         description: User status toggled successfully.
  *         content:
  *           application/json:
  *             schema:
@@ -30,7 +30,7 @@
  *                   example: true
  *                 message:
  *                   type: string
- *                   example: "user deleted"
+ *                   example: "user enabled" or "user disabled"
  *       404:
  *         description: No user found with the specified `userId`.
  *         content:

@@ -48,7 +48,7 @@ const socketHandler = (io) => {
             console.log('sentNotification event received:', message);
             const receiver = users.find(user => user.userId === message.receiverId);
             const socketId = receiver?.socketId;
-            console.log(message, socketId,'-----------------------------')
+            
             if (socketId) {
                 io.to(socketId).emit('receiveNotification', message);
                 console.log(`Notification sent to ${message.receiverId}`);

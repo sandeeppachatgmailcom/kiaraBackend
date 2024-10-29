@@ -16,7 +16,7 @@
  *               userType:
  *                 type: string
  *                 description: The designation of the user (e.g., role or type).
- *                 example: "DN10000008"
+ *                 example: "DN10000009"
  *               clientId:
  *                 type: string
  *                 description: The unique ID of the client for whom to retrieve active users.

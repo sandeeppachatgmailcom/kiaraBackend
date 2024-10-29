@@ -2,6 +2,8 @@
  * @swagger
  * /user/turnUserOnOff:
  *   post:
+ *     tags:
+ *       - user
  *     summary: Enable or disable a user
  *     description: Toggles the active state of a user in the system by their userId.
  *     requestBody:
