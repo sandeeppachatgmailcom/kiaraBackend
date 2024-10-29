@@ -1,6 +1,6 @@
 /**
  * @swagger
- * /user/turnUserOnOff:
+ * /admin/turnUserOnOff:
  *   post:
  *     tags:
  *       - user

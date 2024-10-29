@@ -1,9 +1,9 @@
 /**
  * @swagger
- * /user/deleteUser:
+ * /admin/deleteUser:
  *   post:
  *     tags:
- *       - user
+ *       - admin
  *     summary: Delete a user
  *     description: Marks a user as deleted in the system by updating their status based on `userId`.
  *     requestBody:
